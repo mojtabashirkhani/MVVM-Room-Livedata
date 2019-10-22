@@ -1,4 +1,4 @@
-package mirzae.com.medicine.ui.tools
+package mirzae.com.medicine.ui.account
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import mirzae.com.medicine.R
 
-class ToolsFragment : Fragment() {
+class AccountFragment : Fragment() {
 
-    private lateinit var toolsViewModel: ToolsViewModel
+    private lateinit var accountViewModel: AccountViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        toolsViewModel =
-            ViewModelProviders.of(this).get(ToolsViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_tools, container, false)
-        val textView: TextView = root.findViewById(R.id.text_tools)
-        toolsViewModel.text.observe(this, Observer {
+        accountViewModel =
+            ViewModelProviders.of(this).get(accountViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_account, container, false)
+        val textView: TextView = root.findViewById(R.id.text_account)
+        accountViewModel.text.observe(this, Observer {
             textView.text = it
         })
         return root

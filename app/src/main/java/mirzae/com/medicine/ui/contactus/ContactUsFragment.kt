@@ -1,4 +1,4 @@
-package mirzae.com.medicine.ui.share
+package mirzae.com.medicine.ui.contactus
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import mirzae.com.medicine.R
 
-class ShareFragment : Fragment() {
+class ContactUsFragment : Fragment() {
 
-    private lateinit var shareViewModel: ShareViewModel
+    private lateinit var contactusViewModel: ContactUsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        shareViewModel =
-            ViewModelProviders.of(this).get(ShareViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_share, container, false)
-        val textView: TextView = root.findViewById(R.id.text_share)
-        shareViewModel.text.observe(this, Observer {
+        contactusViewModel =
+            ViewModelProviders.of(this).get(contactusViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_contactus, container, false)
+        val textView: TextView = root.findViewById(R.id.text_contactus)
+        contactusViewModel.text.observe(this, Observer {
             textView.text = it
         })
         return root

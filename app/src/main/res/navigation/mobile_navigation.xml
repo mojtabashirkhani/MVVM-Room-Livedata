@@ -12,32 +12,21 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="mirzae.com.medicine.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_account"
+        android:name="mirzae.com.medicine.ui.account.AccountFragment"
+        android:label="@string/menu_login"
+        tools:layout="@layout/fragment_account" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="mirzae.com.medicine.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_contactus"
+        android:name="mirzae.com.medicine.ui.contactus.ContactUsFragment"
+        android:label="@string/menu_contact_us"
+        tools:layout="@layout/fragment_contactus" />
+
 
     <fragment
-        android:id="@+id/nav_tools"
-        android:name="mirzae.com.medicine.ui.tools.ToolsFragment"
-        android:label="@string/menu_tools"
-        tools:layout="@layout/fragment_tools" />
-
-    <fragment
-        android:id="@+id/nav_share"
-        android:name="mirzae.com.medicine.ui.share.ShareFragment"
-        android:label="@string/menu_share"
-        tools:layout="@layout/fragment_share" />
-
-    <fragment
-        android:id="@+id/nav_send"
-        android:name="mirzae.com.medicine.ui.send.SendFragment"
-        android:label="@string/menu_send"
-        tools:layout="@layout/fragment_send" />
+        android:id="@+id/nav_aboutus"
+        android:name="mirzae.com.medicine.ui.about.AboutUsFragment"
+        android:label="@string/menu_about_us"
+        tools:layout="@layout/fragment_about" />
 </navigation>
