@@ -8,13 +8,19 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import mirzae.com.medicine.R
-import mirzae.com.medicine.ui.home.HomeFragment
+import mirzae.com.medicine.ui.listener.HomeInteractionListener
 
 class HomeRecyclerAdapter(private val context: Context?, private val subjects: ArrayList<String>,
-                          private val images: ArrayList<Int>, private val mListener: HomeFragment.HomeInteractionListener?): RecyclerView.Adapter<HomeRecyclerAdapter.ViewHolder>() {
+                          private val images: ArrayList<Int>, private val mListener: HomeInteractionListener?): RecyclerView.Adapter<HomeRecyclerAdapter.ViewHolder>() {
 
     private val mOnClickListener: View.OnClickListener = View.OnClickListener {
-        mListener?.homeClickListener()
+
+        mListener?.homeToSubject()
+    }
+
+    private val dOnClickListener: View.OnClickListener = View.OnClickListener {
+
+        mListener?.homeToDrug()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -29,7 +35,13 @@ class HomeRecyclerAdapter(private val context: Context?, private val subjects: A
           holder.imgHome.setImageResource(images[position])
 
           with(holder.view){
-              setOnClickListener(mOnClickListener)
+              when (holder.adapterPosition){
+
+                  1,3,4,5 -> setOnClickListener(mOnClickListener)
+
+                  else -> setOnClickListener(dOnClickListener)
+              }
+
 
           }
 

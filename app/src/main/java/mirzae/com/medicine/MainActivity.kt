@@ -14,13 +14,23 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
 import mirzae.com.medicine.ui.home.HomeFragment
+import mirzae.com.medicine.ui.listener.HomeInteractionListener
+import mirzae.com.medicine.ui.listener.SubjectInteractionListener
 
-class MainActivity : AppCompatActivity(),HomeFragment.HomeInteractionListener {
+class MainActivity : AppCompatActivity(), HomeInteractionListener, SubjectInteractionListener {
 
-
-    override fun homeClickListener() {
+    override fun homeToSubject() {
         findNavController(R.id.nav_host_fragment).navigate(R.id.action_nav_home_to_nav_subject)
     }
+
+    override fun homeToDrug() {
+        findNavController(R.id.nav_host_fragment).navigate(R.id.action_nav_home_to_nav_drug)
+    }
+
+    override fun subjectToDrug() {
+        findNavController(R.id.nav_host_fragment).navigate(R.id.action_nav_subject_to_nav_drug)
+    }
+
 
     private lateinit var appBarConfiguration: AppBarConfiguration
 

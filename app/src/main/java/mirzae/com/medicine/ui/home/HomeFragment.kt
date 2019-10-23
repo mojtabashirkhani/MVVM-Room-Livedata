@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import mirzae.com.medicine.R
 import mirzae.com.medicine.ui.adapter.HomeRecyclerAdapter
+import mirzae.com.medicine.ui.listener.HomeInteractionListener
 
 class HomeFragment : Fragment(){
 
@@ -54,7 +55,7 @@ class HomeFragment : Fragment(){
             listener = context
 
         } else {
-            throw RuntimeException(context.toString() + " must implement HomeInteraction")
+            throw RuntimeException(context.toString() + " must implement HomeInteraction") as Throwable
 
         }
     }
@@ -64,8 +65,6 @@ class HomeFragment : Fragment(){
         listener = null
     }
 
-    interface HomeInteractionListener{
-        fun homeClickListener()
-    }
+
 
 }

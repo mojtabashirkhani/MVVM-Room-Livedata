@@ -16,4 +16,6 @@
     <string name="title_activity_main">main</string>
     <string name="menu_home">خانه</string>
     <string name="list_subject">موضوعات</string>
+    <string name="list_detail">توضیحات</string>
+    <string name="list_drugs">دارو ها</string>
 </resources>

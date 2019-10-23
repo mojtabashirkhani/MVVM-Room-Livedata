@@ -13,13 +13,36 @@
         <action
             android:id="@+id/action_nav_home_to_nav_subject"
             app:destination="@id/nav_subject" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_drug"
+            app:destination="@id/nav_drug" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_drug"
+        android:name="mirzae.com.medicine.ui.drug.DrugFragment"
+        android:label="@string/list_drugs"
+        tools:layout="@layout/fragment_drug">
+        <action
+            android:id="@+id/action_nav_drug_to_nav_detail"
+            app:destination="@id/nav_detail" />
     </fragment>
 
     <fragment
         android:id="@+id/nav_subject"
         android:name="mirzae.com.medicine.ui.subject.SubjectFragment"
         android:label="@string/list_subject"
-        tools:layout="@layout/fragment_subject"/>
+        tools:layout="@layout/fragment_subject">
+        <action
+            android:id="@+id/action_nav_subject_to_nav_drug"
+            app:destination="@id/nav_drug" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_detail"
+        android:name="mirzae.com.medicine.ui.detail.DetailFragment"
+        android:label="@string/list_detail"
+        tools:layout="@layout/fragment_detail"/>
 
     <fragment
         android:id="@+id/nav_account"
