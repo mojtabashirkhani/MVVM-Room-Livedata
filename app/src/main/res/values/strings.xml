@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">Medicine</string>
+    <string name="app_name">مدرپ آنلاین</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">دارو</string>
+    <string name="nav_header_title">مدرپ آنلاین</string>
     <string name="nav_header_subtitle">اپلیکیشن دارویی، برای معرفی محصولات دارویی جدید</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
@@ -15,4 +15,5 @@
     <string name="menu_send">Send</string>
     <string name="title_activity_main">main</string>
     <string name="menu_home">خانه</string>
+    <string name="list_subject">موضوعات</string>
 </resources>

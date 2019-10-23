@@ -9,7 +9,7 @@ import androidx.room.Query
 @Dao
 interface MedicineDao {
 
-    @Query ("SELECT * FROM medicine WHERE  tag = (:tag)")
+    @Query ("SELECT * FROM medicine JOIN tag ON medicine.medicine_id = tag.medicine_id WHERE tag.name = (:tag)")
     fun search(tag: String): LiveData<List<Medicine>>
 
     @Query("SELECT * FROM medicine WHERE subject=(:subject)")
@@ -17,5 +17,8 @@ interface MedicineDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertMedicines(medicine: Medicine)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertTag(tag: Tag)
 
 }

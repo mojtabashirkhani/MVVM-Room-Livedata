@@ -8,14 +8,12 @@ import androidx.room.PrimaryKey
 data class Medicine(
 
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "idMedicine")
+    @ColumnInfo(name = "medicine_id")
     var id: Int = 0,
 
     @ColumnInfo(name = "name")
     var name: String = "",
 
-    @ColumnInfo(name = "tag")
-    var tag: String = "",
 
     @ColumnInfo(name = "subject")
     var subject: String = "",

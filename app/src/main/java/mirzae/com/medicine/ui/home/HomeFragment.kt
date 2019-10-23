@@ -1,5 +1,6 @@
 package mirzae.com.medicine.ui.home
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,14 +10,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.runBlocking
 import mirzae.com.medicine.R
 import mirzae.com.medicine.ui.adapter.HomeRecyclerAdapter
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(){
+
 
     private lateinit var homeViewModel: HomeViewModel
+    private var listener : HomeInteractionListener? = null
 
 
     override fun onCreateView(
@@ -36,7 +37,7 @@ class HomeFragment : Fragment() {
 
             val x = it
             homeViewModel.image.observe(this, Observer {
-                recyclerView.adapter = HomeRecyclerAdapter(context, x, it)
+                recyclerView.adapter = HomeRecyclerAdapter(context, x, it,listener)
 
             })
 
@@ -45,4 +46,26 @@ class HomeFragment : Fragment() {
 
         return root
     }
+
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+
+        if (context is HomeInteractionListener){
+            listener = context
+
+        } else {
+            throw RuntimeException(context.toString() + " must implement HomeInteraction")
+
+        }
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        listener = null
+    }
+
+    interface HomeInteractionListener{
+        fun homeClickListener()
+    }
+
 }

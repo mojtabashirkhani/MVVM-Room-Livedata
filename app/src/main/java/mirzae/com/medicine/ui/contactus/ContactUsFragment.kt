@@ -12,18 +12,18 @@ import mirzae.com.medicine.R
 
 class ContactUsFragment : Fragment() {
 
-    private lateinit var contactusViewModel: ContactUsViewModel
+    private lateinit var contactUsViewModel: ContactUsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        contactusViewModel =
-            ViewModelProviders.of(this).get(contactusViewModel::class.java)
+        contactUsViewModel =
+            ViewModelProviders.of(this).get(ContactUsViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_contactus, container, false)
         val textView: TextView = root.findViewById(R.id.text_contactus)
-        contactusViewModel.text.observe(this, Observer {
+        contactUsViewModel.text.observe(this, Observer {
             textView.text = it
         })
         return root

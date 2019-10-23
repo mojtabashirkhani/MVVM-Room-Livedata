@@ -13,8 +13,14 @@ import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
+import mirzae.com.medicine.ui.home.HomeFragment
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),HomeFragment.HomeInteractionListener {
+
+
+    override fun homeClickListener() {
+        findNavController(R.id.nav_host_fragment).navigate(R.id.action_nav_home_to_nav_subject)
+    }
 
     private lateinit var appBarConfiguration: AppBarConfiguration
 
