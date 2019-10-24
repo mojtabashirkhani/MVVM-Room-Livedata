@@ -14,9 +14,14 @@ data class Medicine(
     @ColumnInfo(name = "name")
     var name: String = "",
 
+    @ColumnInfo(name = "tag")
+    var tag: String = "",
 
     @ColumnInfo(name = "subject")
     var subject: String = "",
+
+    @ColumnInfo(name = "image")
+    var image: Int = -1,
 
     @ColumnInfo(name = "content")
     var content: String = ""

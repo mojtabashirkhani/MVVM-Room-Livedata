@@ -12,14 +12,19 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import mirzae.com.medicine.R
 import mirzae.com.medicine.ui.adapter.SubjectRecyclerAdapter
-import mirzae.com.medicine.ui.listener.HomeInteractionListener
 import mirzae.com.medicine.ui.listener.SubjectInteractionListener
 
 class SubjectFragment: Fragment() {
 
     private lateinit var subjectViewModel: SubjectViewModel
     private var listener : SubjectInteractionListener? = null
+    private var position : Int? = null
 
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+         position = arguments?.getInt("position")
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,14 +38,32 @@ class SubjectFragment: Fragment() {
 
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        subjectViewModel.list.observe(this, Observer {
+        subjectViewModel.txtArticles.observe(this, Observer {
 
-            val x = it
+            if (position == 4)
+                recyclerView.adapter = SubjectRecyclerAdapter(context, it, listener)
 
-            subjectViewModel.image.observe(this, Observer {
+        })
 
-                recyclerView.adapter = SubjectRecyclerAdapter(context, x, it, listener)
-            })
+        subjectViewModel.txtConference.observe(this, Observer {
+
+            if (position == 5)
+                recyclerView.adapter = SubjectRecyclerAdapter(context, it, listener)
+
+        })
+
+        subjectViewModel.txtProfession.observe(this, Observer {
+
+            if (position == 1)
+                recyclerView.adapter = SubjectRecyclerAdapter(context, it, listener)
+
+        })
+
+        subjectViewModel.txtSupplements.observe(this, Observer {
+
+            if (position == 3)
+                recyclerView.adapter = SubjectRecyclerAdapter(context, it, listener)
+
         })
 
         return root

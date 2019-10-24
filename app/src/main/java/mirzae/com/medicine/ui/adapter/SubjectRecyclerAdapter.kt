@@ -8,11 +8,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import mirzae.com.medicine.R
-import mirzae.com.medicine.ui.listener.HomeInteractionListener
 import mirzae.com.medicine.ui.listener.SubjectInteractionListener
 
 class SubjectRecyclerAdapter(private val context: Context?, private val subjects: ArrayList<String>,
-                             private val images: ArrayList<Int>, private val mListener: SubjectInteractionListener?): RecyclerView.Adapter<SubjectRecyclerAdapter.ViewHolder>() {
+                             private val mListener: SubjectInteractionListener?): RecyclerView.Adapter<SubjectRecyclerAdapter.ViewHolder>() {
 
     private val mOnClickListener: View.OnClickListener = View.OnClickListener {
         mListener?.subjectToDrug()
@@ -27,7 +26,7 @@ class SubjectRecyclerAdapter(private val context: Context?, private val subjects
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.txtHome.text = subjects[position]
-        holder.imgHome.setImageResource(images[position])
+//        holder.imgHome.setImageResource(images[position])
 
 
 

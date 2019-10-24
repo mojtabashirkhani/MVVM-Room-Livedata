@@ -7,18 +7,25 @@ import mirzae.com.medicine.R
 
 class SubjectViewModel: ViewModel() {
 
-    private val txtSubject = MutableLiveData<ArrayList<String>>().apply {
-        value = arrayListOf("محبوب‌ ترین ها", "تخصص ها", "داروهای گیاهی", "مکمل ها", "مقالات علمی", "همایش ها", "یافته های جدید پزشکی")
+    private val mTxtProfession = MutableLiveData<ArrayList<String>>().apply {
+        value = arrayListOf("قلب و عروق", "گوارش", "گوش و حلق و بینی", "پوست و مو", "مغز و اعصاب", "اعصاب و روان")
     }
 
-    private val imgSubject = MutableLiveData<ArrayList<Int>>().apply {
-        value = arrayListOf(
-            R.drawable.ic_file, R.drawable.ic_doctor, R.drawable.ic_herbal , R.drawable.ic_vitamins,
-            R.drawable.ic_copyright, R.drawable.ic_lecture, R.drawable.ic_research)
-
+    private val mTxtSupplements = MutableLiveData<ArrayList<String>>().apply {
+        value = arrayListOf("ورزشی", "غذایی", "پوست مو ناخن", "کودکان")
     }
 
-    val list: LiveData<ArrayList<String>> = txtSubject
-    val image: LiveData<ArrayList<Int>> = imgSubject
+    private val mTxtArticles = MutableLiveData<ArrayList<String>>().apply {
+        value = arrayListOf("آخرین مقالات", "پادکست ها")
+    }
+
+    private val mTxtConference = MutableLiveData<ArrayList<String>>().apply {
+      value = arrayListOf("همایش های بین المللی", "همایش های ملی")
+    }
+
+    val txtProfession: LiveData<ArrayList<String>> = mTxtProfession
+    val txtSupplements : LiveData<ArrayList<String>> = mTxtSupplements
+    val txtArticles: LiveData<ArrayList<String>> = mTxtArticles
+    val txtConference: LiveData<ArrayList<String>> = mTxtConference
 
 }

@@ -19,8 +19,10 @@ import mirzae.com.medicine.ui.listener.SubjectInteractionListener
 
 class MainActivity : AppCompatActivity(), HomeInteractionListener, SubjectInteractionListener {
 
-    override fun homeToSubject() {
-        findNavController(R.id.nav_host_fragment).navigate(R.id.action_nav_home_to_nav_subject)
+    override fun homeToSubject(position: Int) {
+        val args = Bundle()
+        args.putInt("position", position)
+        findNavController(R.id.nav_host_fragment).navigate(R.id.action_nav_home_to_nav_subject, args)
     }
 
     override fun homeToDrug() {
