@@ -7,7 +7,7 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 29
     defaultConfig {
-        applicationId "mirzae.com.medicine"
+        applicationId "ir.roshdclub.onlinemedrep"
         minSdkVersion 17
         targetSdkVersion 29
         versionCode 1

@@ -1,4 +1,4 @@
-package mirzae.com.medicine
+package ir.roshdclub.onlinemedrep
 
 import org.junit.Test
 
