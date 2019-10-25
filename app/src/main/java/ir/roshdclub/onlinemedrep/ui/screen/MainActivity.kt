@@ -1,4 +1,4 @@
-package ir.roshdclub.onlinemedrep
+package ir.roshdclub.onlinemedrep.ui.screen
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

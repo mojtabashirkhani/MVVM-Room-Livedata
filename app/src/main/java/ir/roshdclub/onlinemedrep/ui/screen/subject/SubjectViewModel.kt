@@ -1,9 +1,8 @@
-package ir.roshdclub.onlinemedrep.ui.subject
+package ir.roshdclub.onlinemedrep.ui.screen.subject
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import ir.roshdclub.onlinemedrep.R
 
 class SubjectViewModel: ViewModel() {
 

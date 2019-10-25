@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="ir.roshdclub.onlinemedrep.ui.home.HomeFragment"
+        android:name="ir.roshdclub.onlinemedrep.ui.screen.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -20,7 +20,7 @@
 
     <fragment
         android:id="@+id/nav_drug"
-        android:name="ir.roshdclub.onlinemedrep.ui.drug.DrugFragment"
+        android:name="ir.roshdclub.onlinemedrep.ui.screen.drug.DrugFragment"
         android:label="@string/list_drugs"
         tools:layout="@layout/fragment_drug">
         <action
@@ -30,7 +30,7 @@
 
     <fragment
         android:id="@+id/nav_subject"
-        android:name="ir.roshdclub.onlinemedrep.ui.subject.SubjectFragment"
+        android:name="ir.roshdclub.onlinemedrep.ui.screen.subject.SubjectFragment"
         android:label="@string/list_subject"
         tools:layout="@layout/fragment_subject">
         <action
@@ -40,26 +40,26 @@
 
     <fragment
         android:id="@+id/nav_detail"
-        android:name="ir.roshdclub.onlinemedrep.ui.detail.DetailFragment"
+        android:name="ir.roshdclub.onlinemedrep.ui.screen.detail.DetailFragment"
         android:label="@string/list_detail"
         tools:layout="@layout/fragment_detail"/>
 
     <fragment
         android:id="@+id/nav_account"
-        android:name="ir.roshdclub.onlinemedrep.ui.account.AccountFragment"
+        android:name="ir.roshdclub.onlinemedrep.ui.screen.account.AccountFragment"
         android:label="@string/menu_login"
         tools:layout="@layout/fragment_account" />
 
     <fragment
         android:id="@+id/nav_contactus"
-        android:name="ir.roshdclub.onlinemedrep.ui.contactus.ContactUsFragment"
+        android:name="ir.roshdclub.onlinemedrep.ui.screen.contactus.ContactUsFragment"
         android:label="@string/menu_contact_us"
         tools:layout="@layout/fragment_contactus" />
 
 
     <fragment
         android:id="@+id/nav_aboutus"
-        android:name="ir.roshdclub.onlinemedrep.ui.about.AboutUsFragment"
+        android:name="ir.roshdclub.onlinemedrep.ui.screen.about.AboutUsFragment"
         android:label="@string/menu_about_us"
         tools:layout="@layout/fragment_about" />
 </navigation>

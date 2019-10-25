@@ -12,7 +12,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name="ir.roshdclub.onlinemedrep.MainActivity"
+            android:name="ir.roshdclub.onlinemedrep.ui.screen.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
 

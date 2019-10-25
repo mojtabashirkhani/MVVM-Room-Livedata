@@ -1,4 +1,4 @@
-package ir.roshdclub.onlinemedrep.ui.about
+package ir.roshdclub.onlinemedrep.ui.screen.about
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -1,12 +1,13 @@
-package ir.roshdclub.onlinemedrep.ui.drug
+package ir.roshdclub.onlinemedrep.ui.screen.detail
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class DrugViewModel: ViewModel() {
+class DetailViewModel: ViewModel() {
+
     private val _text = MutableLiveData<String>().apply {
-        value = "This is drug Fragment"
+        value = "This is detail Fragment"
     }
     val text: LiveData<String> = _text
 }

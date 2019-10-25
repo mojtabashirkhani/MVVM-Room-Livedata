@@ -1,4 +1,4 @@
-package ir.roshdclub.onlinemedrep.ui.detail
+package ir.roshdclub.onlinemedrep.ui.screen.detail
 
 import android.graphics.Color
 import android.os.Bundle

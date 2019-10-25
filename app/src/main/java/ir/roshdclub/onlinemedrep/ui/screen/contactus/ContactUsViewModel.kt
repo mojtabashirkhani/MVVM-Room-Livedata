@@ -1,4 +1,4 @@
-package ir.roshdclub.onlinemedrep.ui.contactus
+package ir.roshdclub.onlinemedrep.ui.screen.contactus
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

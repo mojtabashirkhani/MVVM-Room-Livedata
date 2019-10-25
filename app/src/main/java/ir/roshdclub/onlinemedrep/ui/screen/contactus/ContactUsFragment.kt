@@ -1,4 +1,4 @@
-package ir.roshdclub.onlinemedrep.ui.contactus
+package ir.roshdclub.onlinemedrep.ui.screen.contactus
 
 import android.os.Bundle
 import android.view.LayoutInflater

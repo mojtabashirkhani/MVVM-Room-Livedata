@@ -1,4 +1,4 @@
-package ir.roshdclub.onlinemedrep.ui.account
+package ir.roshdclub.onlinemedrep.ui.screen.account
 
 import android.os.Bundle
 import android.view.LayoutInflater

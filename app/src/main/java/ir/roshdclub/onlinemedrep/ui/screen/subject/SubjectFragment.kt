@@ -1,4 +1,4 @@
-package ir.roshdclub.onlinemedrep.ui.subject
+package ir.roshdclub.onlinemedrep.ui.screen.subject
 
 import android.content.Context
 import android.os.Bundle
