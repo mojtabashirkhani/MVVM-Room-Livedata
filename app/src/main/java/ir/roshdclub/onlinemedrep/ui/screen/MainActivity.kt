@@ -13,8 +13,18 @@ import com.google.android.material.navigation.NavigationView
 import ir.roshdclub.onlinemedrep.ui.listener.HomeInteractionListener
 import ir.roshdclub.onlinemedrep.ui.listener.SubjectInteractionListener
 import ir.roshdclub.onlinemedrep.R
+import ir.roshdclub.onlinemedrep.ui.listener.DrugIntractionListener
 
-class MainActivity : AppCompatActivity(), HomeInteractionListener, SubjectInteractionListener {
+class MainActivity : AppCompatActivity(), HomeInteractionListener, SubjectInteractionListener, DrugIntractionListener {
+
+
+
+    override fun drugToDetail(name: String) {
+        val args = Bundle()
+        args.putString("name",name)
+
+        findNavController(R.id.nav_host_fragment).navigate(R.id.action_nav_drug_to_nav_detail, args)
+    }
 
     override fun homeToSubject(position: Int) {
         val args = Bundle()
@@ -22,12 +32,18 @@ class MainActivity : AppCompatActivity(), HomeInteractionListener, SubjectIntera
         findNavController(R.id.nav_host_fragment).navigate(R.id.action_nav_home_to_nav_subject, args)
     }
 
-    override fun homeToDrug() {
-        findNavController(R.id.nav_host_fragment).navigate(R.id.action_nav_home_to_nav_drug)
+    override fun homeToDrug(subject: String) {
+        val args = Bundle()
+        args.putString("subject", subject)
+
+        findNavController(R.id.nav_host_fragment).navigate(R.id.action_nav_home_to_nav_drug, args)
     }
 
-    override fun subjectToDrug() {
-        findNavController(R.id.nav_host_fragment).navigate(R.id.action_nav_subject_to_nav_drug)
+    override fun subjectToDrug(subject: String) {
+        val args = Bundle()
+        args.putString("subject", subject)
+
+        findNavController(R.id.nav_host_fragment).navigate(R.id.action_nav_subject_to_nav_drug, args)
     }
 
 

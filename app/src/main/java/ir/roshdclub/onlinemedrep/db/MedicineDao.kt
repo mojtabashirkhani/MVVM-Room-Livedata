@@ -12,26 +12,17 @@ interface MedicineDao {
     @Query ("SELECT name FROM medicine WHERE tag LIKE (:tag)")
     fun search(tag: String): LiveData<List<Medicine>>
 
-    @Query("SELECT DISTINCT subject FROM medicine WHERE subject IN ('محبوب ترین ها','تخصص ها','دارو های گیاهی','مکمل ها','مقالات علمی','همایش ها','یافته های جدید پزشکی') ")
-    fun getHomeSubjects(): LiveData<List<Medicine>>
-
-    @Query("SELECT DISTINCT subject FROM medicine WHERE subject NOT IN ('محبوب ترین ها','تخصص ها','دارو های گیاهی','مکمل ها','مقالات علمی','همایش ها','یافته های جدید پزشکی') ")
-    fun getSubHomeSubjects(): LiveData<List<Medicine>>
-
-    @Query("SELECT DISTINCT image FROM medicine WHERE subject IN ('محبوب ترین ها','تخصص ها','دارو های گیاهی','مکمل ها','مقالات علمی','همایش ها','یافته های جدید پزشکی') ")
-    fun getHomeImages(): LiveData<List<Medicine>>
-
-    @Query("SELECT DISTINCT image FROM medicine WHERE subject NOT IN ('محبوب ترین ها','تخصص ها','دارو های گیاهی','مکمل ها','مقالات علمی','همایش ها','یافته های جدید پزشکی') ")
-    fun getSubHomeImages(): LiveData<List<Medicine>>
-
     @Query("SELECT name FROM medicine WHERE subject=(:subject)")
-    fun getMedicines(subject: String): LiveData<List<Medicine>>
+    fun getMedicines(subject: String?): LiveData<List<Medicine>>
 
     @Query("SELECT content FROM medicine WHERE name = (:name)")
-    fun getContent(name: String): LiveData<Medicine>
+    fun getContent(name: String?): LiveData<Medicine>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertMedicines(medicine: Medicine)
+    suspend fun insertMedicines(medicine: Medicine)
+
+    @Query("DELETE FROM medicine")
+    suspend fun deleteAll()
 
 
 }

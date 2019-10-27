@@ -1,10 +1,23 @@
 package ir.roshdclub.onlinemedrep.ui.screen.detail
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.*
+import ir.roshdclub.onlinemedrep.db.Medicine
+import ir.roshdclub.onlinemedrep.db.MedicineDatabase
+import ir.roshdclub.onlinemedrep.db.MedicineRepository
 
-class DetailViewModel: ViewModel() {
+class DetailViewModel(application: Application, name: String?): AndroidViewModel(application) {
+
+
+    private val repository: MedicineRepository
+    val content : LiveData<Medicine>
+
+    init {
+        val medicineDao = MedicineDatabase.getDatabase(application, viewModelScope).medicineDao()
+        repository = MedicineRepository(medicineDao)
+        content = repository.getContent(name)
+
+    }
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is detail Fragment"

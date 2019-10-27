@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import ir.roshdclub.onlinemedrep.R
 import ir.roshdclub.onlinemedrep.ui.listener.HomeInteractionListener
 
@@ -34,7 +36,14 @@ class HomeRecyclerAdapter(private val context: Context?, private val subjects: A
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
           holder.txtHome.text = subjects[position]
-          holder.imgHome.setImageResource(images[position])
+//          holder.imgHome.setImageResource(images[position])
+
+        Glide
+            .with(context!!)
+            .load(images[position])
+            .centerCrop()
+            .placeholder(R.mipmap.ic_launcher)
+            .into(holder.imgHome)
 
           /*with(holder.view){
 
@@ -61,11 +70,13 @@ class HomeRecyclerAdapter(private val context: Context?, private val subjects: A
 
            view.setOnClickListener {
 
+               val subject: String = txtHome.text.toString()
+
                when(adapterPosition){
 
-                   1,3,4,5 -> mListener?.homeToSubject(adapterPosition)
+                   1,3 -> mListener?.homeToSubject(adapterPosition)
 
-                   else -> mListener?.homeToDrug()
+                   else -> mListener?.homeToDrug(subject)
 
                }
            }
