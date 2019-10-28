@@ -11,7 +11,7 @@ import ir.roshdclub.onlinemedrep.db.MedicineRepository
 
 class DrugViewModel(application: Application, subject: String?): AndroidViewModel(application) {
 
-     val repository: MedicineRepository
+     private val repository: MedicineRepository
      var listDrug : LiveData<List<Medicine>>
 
 

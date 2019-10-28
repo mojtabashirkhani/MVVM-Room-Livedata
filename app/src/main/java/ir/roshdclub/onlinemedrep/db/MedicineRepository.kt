@@ -13,6 +13,11 @@ class MedicineRepository(private val medicineDao: MedicineDao) {
     fun getContent(name: String?): LiveData<Medicine>{
         return medicineDao.getContent(name)
     }
+
+    fun getSearchResult(search: String?): LiveData<List<Medicine>> {
+        return medicineDao.search(search)
+    }
+
     suspend fun insertMedicines(medicine: Medicine){
         medicineDao.insertMedicines(medicine)
     }

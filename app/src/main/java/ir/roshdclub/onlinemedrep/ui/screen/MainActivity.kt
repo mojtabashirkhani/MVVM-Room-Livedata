@@ -13,16 +13,21 @@ import com.google.android.material.navigation.NavigationView
 import ir.roshdclub.onlinemedrep.ui.listener.HomeInteractionListener
 import ir.roshdclub.onlinemedrep.ui.listener.SubjectInteractionListener
 import ir.roshdclub.onlinemedrep.R
-import ir.roshdclub.onlinemedrep.ui.listener.DrugIntractionListener
+import ir.roshdclub.onlinemedrep.ui.listener.DrugInteractionListener
 
-class MainActivity : AppCompatActivity(), HomeInteractionListener, SubjectInteractionListener, DrugIntractionListener {
+class MainActivity : AppCompatActivity(), HomeInteractionListener, SubjectInteractionListener, DrugInteractionListener{
 
+
+    override fun homeToDetail(name: String) {
+        val args = Bundle()
+        args.putString("name",name)
+        findNavController(R.id.nav_host_fragment).navigate(R.id.action_nav_home_to_nav_detail, args)
+    }
 
 
     override fun drugToDetail(name: String) {
         val args = Bundle()
         args.putString("name",name)
-
         findNavController(R.id.nav_host_fragment).navigate(R.id.action_nav_drug_to_nav_detail, args)
     }
 

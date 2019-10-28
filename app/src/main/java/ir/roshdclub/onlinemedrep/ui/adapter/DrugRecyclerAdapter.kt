@@ -6,16 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ir.roshdclub.onlinemedrep.R
 import ir.roshdclub.onlinemedrep.db.Medicine
-import ir.roshdclub.onlinemedrep.ui.listener.DrugIntractionListener
-import ir.roshdclub.onlinemedrep.ui.listener.SubjectInteractionListener
+import ir.roshdclub.onlinemedrep.ui.listener.DrugInteractionListener
 
 class DrugRecyclerAdapter (private val context: Context?,
-                           private val mListener: DrugIntractionListener?): RecyclerView.Adapter<DrugRecyclerAdapter.ViewHolder>() {
+                           private val mListener: DrugInteractionListener?): RecyclerView.Adapter<DrugRecyclerAdapter.ViewHolder>() {
 
     private var medicines = emptyList<Medicine>() // Cached copy of words
 

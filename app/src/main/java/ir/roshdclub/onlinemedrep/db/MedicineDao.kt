@@ -9,10 +9,10 @@ import androidx.room.Query
 @Dao
 interface MedicineDao {
 
-    @Query ("SELECT name FROM medicine WHERE tag LIKE (:tag)")
-    fun search(tag: String): LiveData<List<Medicine>>
+    @Query ("SELECT name, image FROM medicine WHERE tag LIKE '%' || :search|| '%' ")
+    fun search(search: String?): LiveData<List<Medicine>>
 
-    @Query("SELECT name FROM medicine WHERE subject=(:subject)")
+    @Query("SELECT name, image FROM medicine WHERE subject = (:subject)")
     fun getMedicines(subject: String?): LiveData<List<Medicine>>
 
     @Query("SELECT content FROM medicine WHERE name = (:name)")

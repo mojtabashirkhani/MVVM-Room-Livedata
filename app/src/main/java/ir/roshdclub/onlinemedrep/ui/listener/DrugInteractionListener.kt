@@ -1,5 +1,5 @@
 package ir.roshdclub.onlinemedrep.ui.listener
 
-interface DrugIntractionListener {
+interface DrugInteractionListener {
     fun drugToDetail(name: String)
 }

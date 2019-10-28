@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_nav_home_to_nav_drug"
             app:destination="@id/nav_drug" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_detail"
+            app:destination="@id/nav_detail" />
     </fragment>
 
     <fragment

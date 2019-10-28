@@ -2,6 +2,9 @@ package ir.roshdclub.onlinemedrep.ui.screen.home
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,16 +13,28 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ir.roshdclub.onlinemedrep.R
+import ir.roshdclub.onlinemedrep.ui.adapter.DrugRecyclerAdapter
 import ir.roshdclub.onlinemedrep.ui.adapter.HomeRecyclerAdapter
+import ir.roshdclub.onlinemedrep.ui.adapter.SearchRecyclerAdapter
+import ir.roshdclub.onlinemedrep.ui.listener.DrugInteractionListener
 import ir.roshdclub.onlinemedrep.ui.listener.HomeInteractionListener
+import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment(){
 
 
     private lateinit var homeViewModel: HomeViewModel
-    private var listener : HomeInteractionListener? = null
+    private lateinit var homeViewModelFactory: HomeViewModelFactory
+   /* private lateinit var searchViewModel: SearchViewModel
+    private lateinit var searchViewModelFactory: SearchViewModelFactory*/
+    private var homeListener : HomeInteractionListener? = null
+    private var searchListener : HomeInteractionListener? = null
+    private var search: String = ""
+    private lateinit var homeRecyclerView: RecyclerView
+    private lateinit var searchRecyclerView: RecyclerView
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -31,20 +46,57 @@ class HomeFragment : Fragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        homeViewModelFactory = HomeViewModelFactory(this.activity?.application!!)
         homeViewModel =
-            ViewModelProviders.of(this).get(HomeViewModel::class.java)
+            ViewModelProviders.of(this, homeViewModelFactory).get(HomeViewModel::class.java)
+
         val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val recyclerView: RecyclerView = root.findViewById(R.id.recycler_home)
         val edtSearch: EditText = root.findViewById(R.id.edt_search)
 
-        recyclerView.layoutManager =  GridLayoutManager(context,3)
+        searchRecyclerView = root.findViewById(R.id.recycler_search)
+        homeRecyclerView = root.findViewById(R.id.recycler_home)
 
+        searchRecyclerView.layoutManager = LinearLayoutManager(context)
+        homeRecyclerView.layoutManager =  GridLayoutManager(context,3)
+
+        edtSearch.addTextChangedListener(object : TextWatcher{
+
+            override fun afterTextChanged(tag: Editable?) {
+
+                Handler().postDelayed({
+
+                    if (tag?.length!! > 5){
+                        search = tag.toString()
+                        observersSearches()
+
+                    } else {
+                        searchRecyclerView.visibility = View.GONE
+                        homeRecyclerView.visibility = View.VISIBLE
+
+                    }
+                },1000)
+
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+        })
 
         homeViewModel.list.observe(this, Observer {
 
             val x = it
             homeViewModel.image.observe(this, Observer {
-                recyclerView.adapter = HomeRecyclerAdapter(context, x, it,listener)
+
+                searchRecyclerView.visibility = View.GONE
+                homeRecyclerView.visibility = View.VISIBLE
+
+                homeRecyclerView.adapter = HomeRecyclerAdapter(context, x, it,homeListener)
 
             })
 
@@ -54,21 +106,50 @@ class HomeFragment : Fragment(){
         return root
     }
 
+    private fun observersSearches() {
+
+        homeViewModel.tag.value = search
+
+       homeViewModel.tag.observe(this, Observer {
+
+           homeViewModel.getSearchResult(it).observe(this, Observer { it ->
+
+               if (it.isNotEmpty()){
+
+                    homeRecyclerView.visibility = View.GONE
+                    searchRecyclerView.visibility = View.VISIBLE
+
+                   val adapter = SearchRecyclerAdapter(context, searchListener)
+                   recycler_search.adapter = adapter
+
+                   it?.let { adapter.setWords(it) }
+
+               }
+           })
+       })
+    }
+
     override fun onAttach(context: Context?) {
         super.onAttach(context)
 
-        if (context is HomeInteractionListener){
-            listener = context
 
-        } else {
+        if (context is HomeInteractionListener ){
+            searchListener = context
+            homeListener = context
+
+
+        }  else {
             throw RuntimeException(context.toString() + " must implement HomeInteraction") as Throwable
 
         }
+
+
     }
 
     override fun onDetach() {
         super.onDetach()
-        listener = null
+        searchListener = null
+        homeListener = null
     }
 
 
