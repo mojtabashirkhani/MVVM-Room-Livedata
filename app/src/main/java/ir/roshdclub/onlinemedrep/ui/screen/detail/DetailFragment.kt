@@ -11,6 +11,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.github.barteksc.pdfviewer.PDFView
+import com.github.barteksc.pdfviewer.link.DefaultLinkHandler
+import com.github.barteksc.pdfviewer.util.FitPolicy
 import ir.roshdclub.onlinemedrep.R
 
 class DetailFragment: Fragment() {
@@ -34,6 +36,22 @@ class DetailFragment: Fragment() {
         detailViewModel.content.observe(this, Observer {
 
             pdfView.fromAsset(it.content)
+
+                .enableSwipe(true) // allows to block changing pages using swipe
+                .swipeHorizontal(false)
+                .enableDoubletap(true)
+                .defaultPage(0)
+                .enableAnnotationRendering(false) // render annotations (such as comments, colors or forms)
+                .password(null)
+                .scrollHandle(null)
+                .enableAntialiasing(true) // improve rendering a little bit on low-res screens
+                .spacing(0)
+                .autoSpacing(false) // add dynamic spacing to fit each page on its own on the screen
+                .pageFitPolicy(FitPolicy.WIDTH) // mode to fit pages in the view
+                .fitEachPage(false) // fit each page to the view, else smaller pages are scaled relative to largest page.
+                .pageSnap(false) // snap pages to screen boundaries
+                .pageFling(false) // make a fling change only a single page like ViewPager
+                .nightMode(false) // toggle night mode
                 .password(null)//enter password if PDF is password protected
                 .defaultPage(0)//set the default page
                 .enableSwipe(true)//enable the swipe to change page
@@ -44,9 +62,7 @@ class DetailFragment: Fragment() {
                 .onPageError { page, t -> Toast.makeText(context, "Error", Toast.LENGTH_LONG).show() }
                 .onPageChange { page, pageCount -> }
                 .onTap { true }
-                .onRender { nbPages, pageWidth, pageHeight -> pdfView.fitToWidth() }
                 .enableAnnotationRendering(true)
-                .invalidPageColor(Color.WHITE)
                 .load()
 
 
