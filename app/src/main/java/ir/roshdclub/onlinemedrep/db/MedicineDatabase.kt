@@ -106,7 +106,7 @@ abstract class MedicineDatabase: RoomDatabase() {
                     medicineDao.insertMedicines(word)
                     word = Medicine(38, "ایزوسورباید دی نیترات (Isosorbide dinitrate)", "Isosorbide dinitrate,ایزوسورباید دی نیترات", "مغز و اعصاب", R.drawable.ic_intelligence, "isosorbidedinitrate.pdf")
                     medicineDao.insertMedicines(word)
-                    word = Medicine(39, "کلونازپام (Clonazepam)", "کلونازپام,clonazepam", "مغز و اعصاب", R.drawable.ic_intelligence, "clonazepam.pdf")
+                    word = Medicine(39, "کلونازپام (Clonazepam)", "کلونازپام,clonazepam", "مغز و اعصاب", R.drawable.ic_intelligence, "")
                     medicineDao.insertMedicines(word)
                     word = Medicine(40, "لورازپام (Lorazepam)", "لورازپام,Lorazepam", "اعصاب و روان", R.drawable.ic_neurology, "lorazepam.pdf")
                     medicineDao.insertMedicines(word)
@@ -137,6 +137,14 @@ abstract class MedicineDatabase: RoomDatabase() {
                     word = Medicine(53, "(Cami Cough) کامی کاف", "کامی کاف,Cami Cough", "کودکان", R.drawable.ic_supplement, "camicough.pdf")
                     medicineDao.insertMedicines(word)
                     word = Medicine(54, "کیدزی کولیک (Kidssi Colic)", "کیدزی کولیک,Kidssi Colic", "کودکان", R.drawable.ic_supplement, "kidssicolic.pdf")
+                    medicineDao.insertMedicines(word)
+                    word = Medicine(55, "همایش (۶)", "همایش,کنفرانس", "همایش ها", R.drawable.ic_lecture, "conbio.pdf")
+                    medicineDao.insertMedicines(word)
+                    word = Medicine(56, "همایش (۷)", "همایش,کنفرانس", "همایش ها", R.drawable.ic_lecture, "concare.pdf")
+                    medicineDao.insertMedicines(word)
+                    word = Medicine(57, "همایش (۸)", "همایش,کنفرانس", "همایش ها", R.drawable.ic_lecture, "conmedical.pdf")
+                    medicineDao.insertMedicines(word)
+                    word = Medicine(58, "همایش (۹)", "همایش,کنفرانس", "همایش ها", R.drawable.ic_lecture, "concan.pdf")
                     medicineDao.insertMedicines(word)
 
 

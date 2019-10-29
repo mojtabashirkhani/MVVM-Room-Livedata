@@ -24,17 +24,21 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         return repository.getSearchResult(search)
     }
 
+    private val mNoResult = MutableLiveData<String>().apply {
+        value = "موردی یافت نشد !!!"
+    }
 
     private val txtSubject = MutableLiveData<ArrayList<String>>().apply {
     value = arrayListOf("محبوب ترین ها", "تخصص ها", "دارو های گیاهی", "مکمل ها", "مقالات علمی", "همایش ها", "یافته های جدید پزشکی")
     }
     private val imgSubject = MutableLiveData<ArrayList<Int>>().apply {
-        value = arrayListOf(R.drawable.ic_file, R.drawable.ic_doctor,R.drawable.ic_herbal , R.drawable.ic_vitamins,
-            R.drawable.ic_copyright, R.drawable.ic_lecture, R.drawable.ic_research)
+        value = arrayListOf(R.drawable.favourite, R.drawable.profession,R.drawable.herbal , R.drawable.supplement,
+            R.drawable.article, R.drawable.conference, R.drawable.find)
 
     }
 
     val list: LiveData<ArrayList<String>> = txtSubject
     val image: LiveData<ArrayList<Int>> = imgSubject
+    val result: LiveData<String> = mNoResult
 
 }
